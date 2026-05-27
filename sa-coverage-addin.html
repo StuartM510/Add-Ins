@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Network Coverage</title>
+  <link rel="stylesheet" href="sa-coverage-addin.css" />
+</head>
+<body>
+
+  <!-- ── Header with network tabs ── -->
+  <div class="addin-header">
+    <h1>📡 SA Network Coverage</h1>
+    <div class="network-tabs">
+      <button class="tab-btn active-vodacom" id="tab-vodacom" onclick="switchNetwork('vodacom')">
+        <span style="font-size:16px;">🔴</span> Vodacom
+      </button>
+      <button class="tab-btn" id="tab-mtn" onclick="switchNetwork('mtn')">
+        <span style="font-size:16px;">🟡</span> MTN
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Controls bar ── -->
+  <div class="controls-bar">
+    <button class="location-btn" id="locationBtn" onclick="useVehicleLocation()">
+      📍 Click to sync vehicle location
+    </button>
+    <button class="open-ext-btn" id="openExtBtn" onclick="openExternal()">
+      ↗ Open
+    </button>
+  </div>
+
+  <!-- ── Active network badge ── -->
+  <div class="network-badge vodacom" id="networkBadge">
+    <div class="badge-dot"></div>
+    <span id="badgeText">Vodacom Coverage Map</span>
+  </div>
+
+  <!-- ── Coverage iframe container ── -->
+  <div class="frame-container">
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading coverage map…</div>
+    </div>
+    <iframe
+      id="coverageFrame"
+      class="coverage-frame"
+      src="https://vccoverage.afrigis.co.za/#/"
+      title="Network Coverage Map"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <div class="location-toast" id="locationToast"></div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="status-footer">
+    <span>Data © respective network providers</span>
+    <span id="footerLink">
+      <a href="https://vccoverage.afrigis.co.za/" target="_blank">vodacom.co.za</a>
+    </span>
+  </div>
+
+  <script src="sa-coverage-addin.js"></script>
+
+</body>
+</html>
