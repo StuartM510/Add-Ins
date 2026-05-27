@@ -1,0 +1,17 @@
+{
+  "name": "SA Network Coverage",
+  "supportEmail": "support@yourcompany.com",
+  "version": "1.0",
+  "items": [
+    {
+      "page": "map",
+      "title": "SA Coverage",
+      "noView": false,
+      "mapScript": {
+        "src": "sa-coverage-addin.js",
+        "style": "sa-coverage-addin.css",
+        "url": "sa-coverage-addin.html"
+      }
+    }
+  ]
+}
