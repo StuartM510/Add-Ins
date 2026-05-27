@@ -1,0 +1,277 @@
+/* ============================================================
+   SA Network Coverage Add-In — Stylesheet
+   Compatible with MyGeotab Map Add-In iframe panel (450px wide)
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f6f8;
+  color: #2d3748;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.addin-header {
+  background: #1a1a2e;
+  padding: 14px 16px 0;
+  flex-shrink: 0;
+}
+
+.addin-header h1 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── Network Tabs ─────────────────────────────────────── */
+.network-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 9px 8px;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #94a3b8;
+  background: #16213e;
+}
+
+.tab-btn:hover {
+  color: #e2e8f0;
+  background: #1e2a4a;
+}
+
+.tab-btn.active-vodacom {
+  background: #e8003d;
+  color: #ffffff;
+}
+
+.tab-btn.active-mtn {
+  background: #ffcc00;
+  color: #1a1a1a;
+}
+
+.tab-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── Controls Bar ─────────────────────────────────────── */
+.controls-bar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.location-btn {
+  flex: 1;
+  padding: 7px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #f7fafc;
+  color: #4a5568;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-btn:hover {
+  border-color: #667eea;
+  background: #fff;
+  color: #2d3748;
+}
+
+.location-btn.has-location {
+  color: #2d3748;
+  border-color: #48bb78;
+  background: #f0fff4;
+}
+
+.open-ext-btn {
+  padding: 7px 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 11px;
+  background: #f7fafc;
+  color: #4a5568;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.open-ext-btn:hover {
+  background: #edf2f7;
+  border-color: #a0aec0;
+}
+
+/* ── Network Badge ────────────────────────────────────── */
+.network-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.network-badge.vodacom {
+  background: #fff5f7;
+  border-bottom: 2px solid #e8003d;
+  color: #c0002e;
+}
+
+.network-badge.mtn {
+  background: #fffde7;
+  border-bottom: 2px solid #ffcc00;
+  color: #b8860b;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+.vodacom .badge-dot { background: #e8003d; }
+.mtn .badge-dot { background: #ffcc00; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Coverage Frame ───────────────────────────────────── */
+.frame-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.coverage-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: #f0f0f0;
+}
+
+/* ── Loading overlay ──────────────────────────────────── */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: #f5f6f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+  font-size: 12px;
+  color: #718096;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Status footer ────────────────────────────────────── */
+.status-footer {
+  background: #1a1a2e;
+  padding: 6px 12px;
+  font-size: 10px;
+  color: #64748b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.status-footer a {
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.status-footer a:hover {
+  color: #e2e8f0;
+  text-decoration: underline;
+}
+
+/* ── Location toast ───────────────────────────────────── */
+.location-toast {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #2d3748;
+  color: #fff;
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.location-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
