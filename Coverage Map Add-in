@@ -1,0 +1,5 @@
+"mapScript": {
+  "src": "https://your-domain.com/addins/sa-coverage-addin.js",
+  "style": "https://your-domain.com/addins/sa-coverage-addin.css",
+  "url": "https://your-domain.com/addins/sa-coverage-addin.html"
+}
